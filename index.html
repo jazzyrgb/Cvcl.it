@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verifica Risultati - Demo</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7fa;
+  color: #17243d;
+}
+/* HEADER */
+.header {
+  background: white;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7%;
+  border-bottom: 1px solid #e2e7ec;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-mark {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #216da1;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+.logo-text {
+  color: #216da1;
+  font-size: 19px;
+  font-weight: bold;
+}
+.logo-text small {
+  display: block;
+  color: #777;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+}
+nav {
+  display: flex;
+  gap: 28px;
+}
+nav a {
+  color: #26354c;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+nav a:hover {
+  color: #216da1;
+}
+/* HERO */
+.hero {
+  background: #eaf4fa;
+  padding: 65px 8%;
+}
+.hero small {
+  color: #3d91bd;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.hero h1 {
+  font-size: 48px;
+  margin-top: 12px;
+  font-weight: 400;
+}
+.hero p {
+  margin-top: 15px;
+  color: #647286;
+}
+/* MAIN */
+.container {
+  max-width: 1050px;
+  margin: -25px auto 80px;
+  padding: 0 20px;
+}
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 12px 35px rgba(30, 60, 90, 0.08);
+}
+/* NOTICE */
+.demo-notice {
+  background: #fff7df;
+  border-left: 4px solid #d9a72d;
+  padding: 14px 17px;
+  margin-bottom: 30px;
+  color: #66551d;
+  font-size: 14px;
+}
+/* SEARCH */
+.search-title {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+.search-description {
+  color: #697587;
+  margin-bottom: 28px;
+}
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 15px;
+}
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #ccd5df;
+  border-radius: 5px;
+  padding: 0 14px;
+  font-size: 15px;
+  outline: none;
+}
+input:focus {
+  border-color: #216da1;
+}
+button {
+  height: 48px;
+  align-self: end;
+  padding: 0 25px;
+  background: #216da1;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover {
+  background: #185b89;
+}
+/* RESULT */
+.result {
+  display: none;
+  margin-top: 45px;
+  border-top: 1px solid #e4e8ed;
+  padding-top: 35px;
+}
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.result-header h2 {
+  font-size: 27px;
+}
+.status {
+  background: #e4f5ea;
+  color: #267044;
+  padding: 9px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: #e1e6eb;
+  border: 1px solid #e1e6eb;
+}
+.info {
+  background: white;
+  padding: 20px;
+}
+.info span {
+  display: block;
+  color: #788596;
+  font-size: 12px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.info strong {
+  font-size: 16px;
+}
+.scores {
+  margin-top: 25px;
+}
+.scores h3 {
+  margin-bottom: 15px;
+}
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 18px;
+  border-bottom: 1px solid #e7ebef;
+}
+.score-row:last-child {
+  border-bottom: none;
+}
+/* FOOTER */
+footer {
+  background: #17243d;
+  color: white;
+  padding: 45px 8%;
+}
+footer .footer-logo {
+  color: white;
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+footer p {
+  color: #bdc7d4;
+  font-size: 14px;
+  margin-top: 5px;
+}
+/* MOBILE */
+@media (max-width: 750px) {
+  .header {
+    padding: 0 5%;
+  }
+  nav {
+    display: none;
+  }
+  .hero {
+    padding: 50px 6%;
+  }
+  .hero h1 {
+    font-size: 38px;
+  }
+  .container {
+    margin-top: -15px;
+  }
+  .card {
+    padding: 25px;
+  }
+  .form {
+    grid-template-columns: 1fr;
+  }
+  button {
+    width: 100%;
+  }
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  .result-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">IL</div>
+    <div class="logo-text">
+      ITALIANO
+      <small>CENTRO LINGUISTICO</small>
+    </div>
+  </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Certificazioni</a>
+    <a href="#">Esami</a>
+    <a href="#">Formazione</a>
+    <a href="#">Contatti</a>
+  </nav>
+</header>
+<!-- HERO -->
+<section class="hero">
+  <small>SERVIZIO ONLINE</small>
+  <h1>Verifica risultati candidato</h1>
+  <p>
+    Consulta l'esito della tua prova inserendo i dati richiesti.
+  </p>
+</section>
+<!-- CONTENT -->
+<main class="container">
+  <div class="card">
+    <div class="demo-notice">
+      <strong>DEMO:</strong>
+      questa è una pagina dimostrativa e non è collegata
+      a un sistema ufficiale di certificazione.
+    </div>
+    <h2 class="search-title">
+      Ricerca risultato
+    </h2>
+    <p class="search-description">
+      Inserisci il numero candidato e la data di nascita.
+    </p>
+    <div class="form">
+      <div class="form-group">
+        <label>Numero candidato</label>
+        <input
+          id="candidate"
+          type="text"
+          placeholder="Es. 12345678"
+        >
+      </div>
+      <div class="form-group">
+        <label>Data di nascita</label>
+        <input
+          id="birth"
+          type="date"
+        >
+      </div>
+      <button onclick="showResult()">
+        VERIFICA
+      </button>
+    </div>
+    <!-- RESULT -->
+    <section id="result" class="result">
+      <div class="result-header">
+        <h2>Risultato della verifica</h2>
+        <div class="status">
+          ESITO POSITIVO
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info">
+          <span>Candidato</span>
+          <strong>Mario Rossi</strong>
+        </div>
+        <div class="info">
+          <span>Numero candidato</span>
+          <strong id="resultCandidate">12345678</strong>
+        </div>
+        <div class="info">
+          <span>Esame</span>
+          <strong>Certificazione Linguistica</strong>
+        </div>
+        <div class="info">
+          <span>Livello</span>
+          <strong>B2</strong>
+        </div>
+      </div>
+      <div class="scores">
+        <h3>Dettaglio risultato</h3>
+        <div class="score-row">
+          <span>Comprensione scritta</span>
+          <strong>18 / 20</strong>
+        </div>
+        <div class="score-row">
+          <span>Comprensione orale</span>
+          <strong>17 / 20</strong>
+        </div>
+        <div class="score-row">
+          <span>Produzione scritta</span>
+          <strong>18 / 20</strong>
+        </div>
+        <div class="score-row">
+          <span>Produzione orale</span>
+          <strong>17 / 20</strong>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    ITALIANO
+  </div>
+  <p>
+    Centro Linguistico — Pagina dimostrativa
+  </p>
+  <p>
+    © 2026 Demo Website
+  </p>
+</footer>
+<script>
+function showResult() {
+  const candidate =
+    document.getElementById("candidate").value;
+  const birth =
+    document.getElementById("birth").value;
+  if (candidate === "" || birth === "") {
+    alert("Inserisci il numero candidato e la data di nascita.");
+    return;
+  }
+  document.getElementById("resultCandidate").textContent =
+    candidate;
+  document.getElementById("result").style.display =
+    "block";
+}
+</script>
+</body>
+</html>
