@@ -1,408 +1,419 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verifica Risultati - Demo</title>
+<title>Language Certification Center</title>
 <style>
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #f4f7fa;
-  color: #17243d;
+  color: #333;
+  background: #fff;
+  line-height: 1.6;
 }
-/* HEADER */
-.header {
+.topbar {
+  background: #063b70;
+  color: white;
+  padding: 10px 6%;
+  text-align: right;
+  font-size: 14px;
+}
+header {
   background: white;
-  height: 88px;
+  border-bottom: 1px solid #ddd;
+  padding: 18px 6%;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 7%;
-  border-bottom: 1px solid #e2e7ec;
+  align-items: center;
+  gap: 25px;
 }
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.logo-mark {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: #216da1;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 25px;
   font-weight: bold;
-  font-size: 15px;
+  color: #063b70;
 }
-.logo-text {
-  color: #216da1;
-  font-size: 19px;
-  font-weight: bold;
-}
-.logo-text small {
+.logo span {
   display: block;
+  font-size: 13px;
   color: #777;
-  font-size: 8px;
-  letter-spacing: 1.5px;
-  margin-top: 2px;
+  font-weight: normal;
 }
 nav {
   display: flex;
-  gap: 28px;
+  gap: 22px;
+  flex-wrap: wrap;
 }
 nav a {
-  color: #26354c;
+  color: #333;
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
 }
 nav a:hover {
-  color: #216da1;
+  color: #063b70;
 }
-/* HERO */
 .hero {
-  background: #eaf4fa;
-  padding: 65px 8%;
+  background: #f1f6fa;
+  padding: 70px 6%;
 }
-.hero small {
-  color: #3d91bd;
-  font-weight: bold;
-  letter-spacing: 2px;
+.hero-inner {
+  max-width: 1200px;
+  margin: auto;
 }
 .hero h1 {
-  font-size: 48px;
-  margin-top: 12px;
-  font-weight: 400;
+  color: #063b70;
+  font-size: 42px;
+  margin-bottom: 18px;
 }
 .hero p {
-  margin-top: 15px;
-  color: #647286;
+  max-width: 760px;
+  font-size: 18px;
+  color: #555;
 }
-/* MAIN */
 .container {
-  max-width: 1050px;
-  margin: -25px auto 80px;
-  padding: 0 20px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 55px 6%;
+}
+.section-title {
+  color: #063b70;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+.section-text {
+  color: #555;
+  margin-bottom: 30px;
+}
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 25px;
+}
+.quick-card {
+  border: 1px solid #ddd;
+  padding: 25px 18px;
+  text-align: center;
+  background: white;
+  transition: .2s;
+}
+.quick-card:hover {
+  box-shadow: 0 5px 18px rgba(0,0,0,.10);
+  transform: translateY(-2px);
+}
+.quick-card h3 {
+  color: #063b70;
+  margin-bottom: 10px;
+}
+.quick-card a {
+  color: #063b70;
+  text-decoration: none;
+  font-weight: bold;
+}
+.activities {
+  background: #f7f8fa;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
 }
 .card {
   background: white;
-  border-radius: 8px;
-  padding: 40px;
-  box-shadow: 0 12px 35px rgba(30, 60, 90, 0.08);
+  border: 1px solid #ddd;
+  padding: 28px;
 }
-/* NOTICE */
-.demo-notice {
-  background: #fff7df;
-  border-left: 4px solid #d9a72d;
-  padding: 14px 17px;
-  margin-bottom: 30px;
-  color: #66551d;
-  font-size: 14px;
-}
-/* SEARCH */
-.search-title {
-  font-size: 25px;
-  margin-bottom: 8px;
-}
-.search-description {
-  color: #697587;
-  margin-bottom: 28px;
-}
-.form {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 15px;
-}
-.form-group label {
-  display: block;
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 7px;
-}
-input {
-  width: 100%;
-  height: 48px;
-  border: 1px solid #ccd5df;
-  border-radius: 5px;
-  padding: 0 14px;
-  font-size: 15px;
-  outline: none;
-}
-input:focus {
-  border-color: #216da1;
-}
-button {
-  height: 48px;
-  align-self: end;
-  padding: 0 25px;
-  background: #216da1;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-button:hover {
-  background: #185b89;
-}
-/* RESULT */
-.result {
-  display: none;
-  margin-top: 45px;
-  border-top: 1px solid #e4e8ed;
-  padding-top: 35px;
-}
-.result-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-}
-.result-header h2 {
-  font-size: 27px;
-}
-.status {
-  background: #e4f5ea;
-  color: #267044;
-  padding: 9px 18px;
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 14px;
-}
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: #e1e6eb;
-  border: 1px solid #e1e6eb;
-}
-.info {
-  background: white;
-  padding: 20px;
-}
-.info span {
-  display: block;
-  color: #788596;
-  font-size: 12px;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.info strong {
-  font-size: 16px;
-}
-.scores {
-  margin-top: 25px;
-}
-.scores h3 {
-  margin-bottom: 15px;
-}
-.score-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 18px;
-  border-bottom: 1px solid #e7ebef;
-}
-.score-row:last-child {
-  border-bottom: none;
-}
-/* FOOTER */
-footer {
-  background: #17243d;
-  color: white;
-  padding: 45px 8%;
-}
-footer .footer-logo {
-  color: white;
-  font-size: 23px;
-  font-weight: bold;
+.card h3 {
+  color: #063b70;
   margin-bottom: 12px;
 }
-footer p {
-  color: #bdc7d4;
-  font-size: 14px;
-  margin-top: 5px;
+.card p {
+  color: #666;
+  margin-bottom: 18px;
 }
-/* MOBILE */
-@media (max-width: 750px) {
-  .header {
-    padding: 0 5%;
+.button {
+  display: inline-block;
+  background: #063b70;
+  color: white;
+  padding: 10px 18px;
+  text-decoration: none;
+  font-size: 14px;
+}
+.button:hover {
+  background: #052d55;
+}
+.news {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.news-item {
+  border-top: 4px solid #063b70;
+  background: #f7f8fa;
+  padding: 22px;
+}
+.news-item small {
+  color: #777;
+}
+.news-item h3 {
+  color: #063b70;
+  margin: 10px 0;
+}
+.access {
+  background: #063b70;
+  color: white;
+}
+.access .section-title {
+  color: white;
+}
+.access-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+.access a {
+  background: white;
+  color: #063b70;
+  padding: 17px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+}
+footer {
+  background: #222;
+  color: #ddd;
+  padding: 45px 6%;
+}
+.footer-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 35px;
+}
+footer h3 {
+  color: white;
+  margin-bottom: 12px;
+}
+footer a {
+  color: #ddd;
+  text-decoration: none;
+  display: block;
+  margin: 6px 0;
+}
+.copyright {
+  max-width: 1200px;
+  margin: 30px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #444;
+  font-size: 13px;
+}
+@media (max-width: 800px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
   }
   nav {
-    display: none;
-  }
-  .hero {
-    padding: 50px 6%;
+    gap: 12px;
   }
   .hero h1 {
-    font-size: 38px;
+    font-size: 32px;
   }
-  .container {
-    margin-top: -15px;
-  }
-  .card {
-    padding: 25px;
-  }
-  .form {
+  .quick-links,
+  .cards,
+  .news,
+  .access-grid,
+  .footer-grid {
     grid-template-columns: 1fr;
-  }
-  button {
-    width: 100%;
-  }
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-  .result-header {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 15px;
   }
 }
 </style>
 </head>
 <body>
-<!-- HEADER -->
-<header class="header">
-  <div class="logo">
-    <div class="logo-mark">IL</div>
-    <div class="logo-text">
-      ITALIANO
-      <small>CENTRO LINGUISTICO</small>
+<div class="topbar">
+  Language Certification Center
+</div>
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      CVCL STYLE
+      <span>Language Certification & Evaluation</span>
     </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#centers">Exam Centers</a>
+      <a href="#training">Training</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contacts</a>
+    </nav>
   </div>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Certificazioni</a>
-    <a href="#">Esami</a>
-    <a href="#">Formazione</a>
-    <a href="#">Contatti</a>
-  </nav>
 </header>
-<!-- HERO -->
-<section class="hero">
-  <small>SERVIZIO ONLINE</small>
-  <h1>Verifica risultati candidato</h1>
-  <p>
-    Consulta l'esito della tua prova inserendo i dati richiesti.
-  </p>
-</section>
-<!-- CONTENT -->
-<main class="container">
-  <div class="card">
-    <div class="demo-notice">
-      <strong>DEMO:</strong>
-      questa è una pagina dimostrativa e non è collegata
-      a un sistema ufficiale di certificazione.
-    </div>
-    <h2 class="search-title">
-      Ricerca risultato
-    </h2>
-    <p class="search-description">
-      Inserisci il numero candidato e la data di nascita.
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <h1>Language Certification</h1>
+    <p>
+      Professional information and services for language examinations,
+      certifications, training and assessment.
     </p>
-    <div class="form">
-      <div class="form-group">
-        <label>Numero candidato</label>
-        <input
-          id="candidate"
-          type="text"
-          placeholder="Es. 12345678"
-        >
-      </div>
-      <div class="form-group">
-        <label>Data di nascita</label>
-        <input
-          id="birth"
-          type="date"
-        >
-      </div>
-      <button onclick="showResult()">
-        VERIFICA
-      </button>
+  </div>
+</section>
+<section class="container">
+  <h2 class="section-title">Quick Access</h2>
+  <p class="section-text">
+    Access the main services and information areas.
+  </p>
+  <div class="quick-links">
+    <div class="quick-card">
+      <h3>CELI</h3>
+      <a href="#certifications">Exam Information →</a>
     </div>
-    <!-- RESULT -->
-    <section id="result" class="result">
-      <div class="result-header">
-        <h2>Risultato della verifica</h2>
-        <div class="status">
-          ESITO POSITIVO
-        </div>
-      </div>
-      <div class="info-grid">
-        <div class="info">
-          <span>Candidato</span>
-          <strong>Mario Rossi</strong>
-        </div>
-        <div class="info">
-          <span>Numero candidato</span>
-          <strong id="resultCandidate">12345678</strong>
-        </div>
-        <div class="info">
-          <span>Esame</span>
-          <strong>Certificazione Linguistica</strong>
-        </div>
-        <div class="info">
-          <span>Livello</span>
-          <strong>B2</strong>
-        </div>
-      </div>
-      <div class="scores">
-        <h3>Dettaglio risultato</h3>
-        <div class="score-row">
-          <span>Comprensione scritta</span>
-          <strong>18 / 20</strong>
-        </div>
-        <div class="score-row">
-          <span>Comprensione orale</span>
-          <strong>17 / 20</strong>
-        </div>
-        <div class="score-row">
-          <span>Produzione scritta</span>
-          <strong>18 / 20</strong>
-        </div>
-        <div class="score-row">
-          <span>Produzione orale</span>
-          <strong>17 / 20</strong>
-        </div>
-      </div>
-    </section>
+    <div class="quick-card">
+      <h3>DILS-PG</h3>
+      <a href="#certifications">Certification →</a>
+    </div>
+    <div class="quick-card">
+      <h3>Exam Calendar</h3>
+      <a href="#calendar">View Calendar →</a>
+    </div>
+    <div class="quick-card">
+      <h3>Contact</h3>
+      <a href="#contact">Contact Center →</a>
+    </div>
   </div>
-</main>
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">
-    ITALIANO
+</section>
+<section class="activities" id="certifications">
+  <div class="container">
+    <h2 class="section-title">Certifications & Activities</h2>
+    <p class="section-text">
+      Discover certification programs, examinations and professional
+      training opportunities.
+    </p>
+    <div class="cards">
+      <div class="card">
+        <h3>CELI Examinations</h3>
+        <p>
+          Information about Italian language certification examinations
+          and different proficiency levels.
+        </p>
+        <a class="button" href="#">Discover</a>
+      </div>
+      <div class="card">
+        <h3>DILS-PG</h3>
+        <p>
+          Certification and professional development for teachers of
+          Italian as a foreign language.
+        </p>
+        <a class="button" href="#">Discover</a>
+      </div>
+      <div class="card" id="training">
+        <h3>Training Courses</h3>
+        <p>
+          Preparation courses and professional training activities.
+        </p>
+        <a class="button" href="#">Discover</a>
+      </div>
+    </div>
   </div>
-  <p>
-    Centro Linguistico — Pagina dimostrativa
+</section>
+<section class="container" id="centers">
+  <h2 class="section-title">Exam Centers</h2>
+  <p class="section-text">
+    Information about affiliated examination centers and certification
+    services.
   </p>
-  <p>
-    © 2026 Demo Website
-  </p>
+  <div class="cards">
+    <div class="card">
+      <h3>Affiliated Centers</h3>
+      <p>Find information about examination locations.</p>
+      <a class="button" href="#">View Centers</a>
+    </div>
+    <div class="card">
+      <h3>Accreditation</h3>
+      <p>Information about requirements and procedures.</p>
+      <a class="button" href="#">Information</a>
+    </div>
+    <div class="card">
+      <h3>Regulations</h3>
+      <p>Documents, forms and administrative information.</p>
+      <a class="button" href="#">Documents</a>
+    </div>
+  </div>
+</section>
+<section class="activities" id="projects">
+  <div class="container">
+    <h2 class="section-title">News & Announcements</h2>
+    <div class="news">
+      <div class="news-item">
+        <small>NEWS</small>
+        <h3>Examination Updates</h3>
+        <p>
+          Latest information about upcoming examination sessions.
+        </p>
+        <a href="#">Read more →</a>
+      </div>
+      <div class="news-item">
+        <small>NOTICE</small>
+        <h3>Registration Information</h3>
+        <p>
+          Check registration dates and important announcements.
+        </p>
+        <a href="#">Read more →</a>
+      </div>
+      <div class="news-item">
+        <small>TRAINING</small>
+        <h3>New Courses</h3>
+        <p>
+          Discover upcoming preparation and training activities.
+        </p>
+        <a href="#">Read more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="access">
+  <div class="container">
+    <h2 class="section-title">Reserved Areas</h2>
+    <div class="access-grid">
+      <a href="#">Candidate Area</a>
+      <a href="#">Exam Center</a>
+      <a href="#">Administration</a>
+      <a href="#">Staff Area</a>
+    </div>
+  </div>
+</section>
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <h3>CVCL STYLE</h3>
+      <p>
+        Language Certification & Evaluation Center.
+      </p>
+    </div>
+    <div>
+      <h3>Services</h3>
+      <a href="#">Certifications</a>
+      <a href="#">Examinations</a>
+      <a href="#">Training</a>
+    </div>
+    <div>
+      <h3>Contacts</h3>
+      <p>Email: info@example.com</p>
+      <p>Phone: +00 000 000 000</p>
+    </div>
+  </div>
+  <div class="copyright">
+    © 2026 CVCL STYLE — Demo website
+  </div>
 </footer>
-<script>
-function showResult() {
-  const candidate =
-    document.getElementById("candidate").value;
-  const birth =
-    document.getElementById("birth").value;
-  if (candidate === "" || birth === "") {
-    alert("Inserisci il numero candidato e la data di nascita.");
-    return;
-  }
-  document.getElementById("resultCandidate").textContent =
-    candidate;
-  document.getElementById("result").style.display =
-    "block";
-}
-</script>
 </body>
 </html>
