@@ -1,151 +1,341 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Lora:wght@500;600&display=swap');
 
-:root {
-  font-family: "Barlow Condensed", sans-serif;
-  color: #292929;
-  background: #fff;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  --wine: #8f153d;
-  --wine-deep: #781032;
-  --ink: #202020;
-  --paper: #f1f1f1;
-}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifica risultati candidato | CVCL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; min-width: 320px; min-height: 100vh; }
-a { color: inherit; }
-button, a { -webkit-tap-highlight-color: transparent; }
-.wide { width: min(1110px, calc(100% - 32px)); margin-inline: auto; }
-.content-column { width: min(990px, calc(100% - 44px)); margin-inline: auto; }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.5;
+        }
 
-.demo-ribbon {
-  position: fixed; z-index: 30; top: 50%; right: -78px; transform: rotate(-90deg);
-  background: #faf7ee; border: 1px solid #d7cfba; color: #675e4c; padding: 6px 18px;
-  font: 600 11px/1 "Barlow Condensed", sans-serif; letter-spacing: .14em; box-shadow: 0 3px 12px #0001;
-}
-.utility-bar { background: var(--wine); color: #fff; font-size: 13px; }
-.utility-inner { height: 40px; display: flex; align-items: center; justify-content: space-between; }
-.utility-actions { height: 100%; display: flex; }
-.utility-actions a { display: flex; align-items: center; padding: 0 27px; text-decoration: none; border-left: 1px solid #ffffff2a; }
-.utility-actions a:hover { background: #fff1; }
+        /* Top dark purple bar */
+        .top-bar {
+            background-color: #7a003c;
+            color: white;
+            font-size: 13px;
+            padding: 6px 0;
+        }
 
-.identity { height: 101px; display: flex; align-items: center; justify-content: space-between; }
-.brand-lockup { display: flex; align-items: center; }
-.crest {
-  width: 66px; height: 65px; margin-right: 12px; color: #fff; display: grid; place-items: center;
-  background: linear-gradient(145deg, #a92651 0 68%, #7f1438 69%); border: 2px solid #8d8d8d;
-  clip-path: polygon(4% 0, 96% 0, 96% 68%, 50% 100%, 4% 68%);
-}
-.crest span { font: 700 24px/1 "Barlow Condensed"; letter-spacing: 1px; transform: translateY(-5px); }
-.brand-copy { line-height: 1.05; min-width: 200px; }
-.brand-copy strong, .brand-lockup--footer strong { display: block; font-size: 14px; letter-spacing: .02em; }
-.brand-copy span { display: block; margin-top: 5px; font: 500 12px/1.1 Lora, serif; }
-.identity-divider { width: 1px; height: 62px; background: #ddd; margin: 0 20px; }
-.seal { position: relative; border: 2px solid #535353; width: 63px; height: 63px; flex: 0 0 auto; border-radius: 50%; display: grid; place-items: center; color: #333; }
-.seal::before, .seal::after { content: ""; position: absolute; border: 1px solid #777; border-radius: 50%; inset: 4px; }
-.seal::after { inset: 10px; border-style: dotted; }
-.seal__ring { display: none; }
-.seal__center { font: 600 17px Lora,serif; }
-.institute-name { margin-left: 11px; font: 600 16px/1.04 Lora, serif; }
-.follow-top { color: var(--wine-deep); display: flex; align-items: center; gap: 16px; font-size: 14px; font-weight: 600; }
-.socials { display: flex; align-items: center; gap: 11px; }
-.socials a { font: 700 17px/1 "Barlow Condensed"; text-decoration: none; }
-.socials a:hover { opacity: .65; }
+        .top-bar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
 
-.main-nav { height: 45px; background: white; box-shadow: 0 8px 14px #0002; border-top: 1px solid #eee; position: relative; z-index: 5; }
-.nav-scroll { height: 100%; display: flex; align-items: stretch; white-space: nowrap; overflow-x: auto; scrollbar-width: none; }
-.nav-scroll::-webkit-scrollbar { display: none; }
-.nav-scroll a { display: flex; align-items: center; text-decoration: none; padding: 0 14px; font-size: 15px; }
-.nav-scroll a:first-child { padding-left: 0; }
-.nav-scroll a:hover { color: var(--wine); }
-.nav-scroll .strong { font-weight: 600; }
-.nav-scroll .active { font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
 
-.candidate-band { background: #f2f2f2; padding: 25px 0 13px; }
-.eyebrow { color: #777; font-size: 11px; letter-spacing: .13em; margin: 0 0 3px; }
-h1 { font-size: 33px; line-height: 1.1; color: var(--wine); margin: 0 0 28px; font-weight: 700; }
-.candidate-data { margin: 0; }
-.candidate-data div { display: grid; grid-template-columns: 93px 1fr; margin: 0 0 7px; font-size: 16px; }
-.candidate-data dt { font-weight: 700; }
-.candidate-data dd { margin: 0; }
+        .top-bar a:hover {
+            text-decoration: underline;
+        }
 
-.results { position: relative; min-height: 390px; padding-top: 26px; }
-.demo-watermark { position: absolute; color: #8f153d0b; font-size: 86px; font-weight: 700; letter-spacing: .13em; transform: rotate(-13deg); left: 25%; top: 130px; pointer-events: none; }
-.result-summary { border-top: 1px solid #bbb; padding-top: 1px; }
-.result-summary p { margin: 0; font-size: 17px; }
-.result-summary .score-total { font-size: 15px; font-weight: 700; margin-top: 8px; }
-.test-results { margin-top: 25px; }
-.test-results h2 { font-size: 16px; font-weight: 400; margin: 0 0 3px; }
-.level-card { width: 246px; min-height: 61px; border: 1px solid #c8c8c8; display: flex; flex-direction: column; padding: 9px 8px; font-size: 15px; }
-.score-table { width: 100%; border: 1px solid #c8c8c8; font-size: 15px; }
-.score-table > div { min-height: 24px; border-bottom: 1px solid #c8c8c8; padding: 2px 6px; line-height: 1.15; }
-.score-table > div:last-child { border-bottom: 0; }
-.score-table .written { min-height: 47px; display: flex; flex-direction: column; color: #333; }
-.score-table .written strong { color: #394e83; }
+        /* Header with logos */
+        .header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 15px 0;
+        }
 
-.accreditations { min-height: 150px; display: flex; align-items: center; justify-content: space-around; gap: 45px; padding: 25px 35px; }
-.partner { filter: grayscale(1); opacity: .82; }
-.partner-seal { display: flex; align-items: center; gap: 8px; font: 600 10px/1.2 Lora,serif; }
-.partner-seal .seal { width: 48px; height: 48px; }
-.wordmark { font: 500 17px/1 Lora,serif; letter-spacing: .55em; border-bottom: 2px solid #555; padding: 0 7px 4px; }
-.quality { color: #214678; display: flex; flex-direction: column; text-align: center; font-family: Lora, serif; line-height: .8; filter: none; }
-.quality i { color: #e9b815; font-size: 20px; height: 8px; }
-.quality b { font-size: 22px; }.quality small { font-size: 7px; letter-spacing: .08em; }
-.council { background: #174b7d; color: white; border: 4px solid #ddd; width: 66px; height: 52px; display: grid; place-items: center; text-align: center; font: 500 6px/1.25 Lora,serif; filter: none; }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
 
-footer { background: var(--ink); color: #f5f5f5; }
-.footer-brand { min-height: 150px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #747474; }
-.brand-lockup--footer .crest { width: 63px; height: 68px; border-color: #aaa; }
-.brand-lockup--footer span { display: block; font: 500 12px Lora,serif; margin-top: 4px; }
-.follow-footer { display: flex; flex-direction: column; gap: 12px; font-size: 14px; margin-right: 82px; }
-.follow-footer .socials { gap: 12px; }
-.footer-links { min-height: 405px; display: grid; grid-template-columns: 1.08fr 1.08fr 1.08fr 1fr; gap: 38px; padding-top: 55px; }
-.footer-links h3 { font-size: 16px; margin: 0 0 22px; border-bottom: 1px solid #555; padding-bottom: 17px; }
-.footer-links p, .footer-links a { display: block; font-size: 14px; line-height: 1.35; margin: 0 0 13px; }
-.footer-links a:hover { color: #ddd; }
-.legal { border-top: 1px solid #555; height: 45px; display: flex; align-items: center; gap: 43px; font-size: 12px; }
-.legal span { margin-left: auto; color: #888; }
-.back-top { position: fixed; z-index: 15; right: 22px; bottom: 16px; width: 42px; height: 42px; border: 0; color: #fff; background: #0879bb; font: 700 28px/1 sans-serif; cursor: pointer; box-shadow: 0 3px 12px #0003; }
-.back-top:hover { background: #05679f; }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-@media (max-width: 760px) {
-  .wide { width: min(100% - 24px, 1110px); }
-  .content-column { width: min(100% - 30px, 990px); }
-  .utility-inner > span { display: none; }
-  .utility-actions { width: 100%; justify-content: flex-end; }
-  .utility-actions a { padding: 0 13px; }
-  .identity { height: 89px; }
-  .crest { width: 55px; height: 57px; }
-  .brand-copy { min-width: 0; }.brand-copy strong { font-size: 12px; }
-  .brand-copy span, .identity-divider, .seal, .institute-name, .follow-top { display: none; }
-  .main-nav { height: 44px; }
-  .nav-scroll a { padding: 0 12px; }
-  h1 { font-size: 29px; margin-bottom: 24px; }
-  .candidate-band { padding-top: 24px; }
-  .results { min-height: 390px; }
-  .demo-watermark { left: 7%; font-size: 58px; }
-  .accreditations { min-height: 130px; gap: 24px; padding-inline: 0; overflow: hidden; }
-  .partner:nth-child(2) { display: none; }
-  .footer-brand { min-height: 135px; }
-  .follow-footer { margin-right: 0; }
-  .footer-links { grid-template-columns: 1fr 1fr; min-height: auto; padding: 40px 0; }
-  .legal { height: auto; min-height: 55px; flex-wrap: wrap; gap: 20px; padding: 12px 0; }
-  .legal span { width: 100%; margin-left: 0; }
-}
+        .cvcl-logo {
+            background-color: #7a003c;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
 
-@media (max-width: 470px) {
-  .demo-ribbon { display: none; }
-  .utility-actions a { font-size: 12px; }
-  .candidate-data div { grid-template-columns: 117px 1fr; font-size: 15px; }
-  .level-card { width: 100%; }
-  .partner-seal span { display: none; }
-  .footer-brand { align-items: flex-start; flex-direction: column; padding: 28px 0; gap: 23px; }
-  .footer-links { grid-template-columns: 1fr; gap: 30px; }
-  .footer-links h3 { margin-bottom: 15px; }
-  .footer-links section:not(:first-child) { padding-top: 3px; }
-  .back-top { right: 12px; bottom: 12px; }
-}
+        .logo-text {
+            font-size: 13px;
+            line-height: 1.3;
+            color: #333;
+        }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+        .logo-text strong {
+            display: block;
+            font-size: 14px;
+            color: #7a003c;
+        }
+
+        .social-links a {
+            color: #7a003c;
+            margin-left: 12px;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        .nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+            padding: 0;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 14px 16px;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .nav a:hover {
+            color: #7a003c;
+            background-color: #f8f0f4;
+        }
+
+        /* Main content */
+        .main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            color: #7a003c;
+            font-size: 28px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .candidate-info {
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        .candidate-info p {
+            margin-bottom: 6px;
+        }
+
+        .candidate-info strong {
+            display: inline-block;
+            width: 140px;
+            color: #333;
+        }
+
+        .result-box {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            padding: 18px 22px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+
+        .result-box .final {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .result-box .score {
+            font-size: 16px;
+            font-weight: bold;
+            color: #7a003c;
+        }
+
+        .section-title {
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        table td {
+            border: 1px solid #ccc;
+            padding: 10px 14px;
+        }
+
+        table tr:first-child td {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+
+        .highlight {
+            color: #0066cc;
+            font-weight: 500;
+        }
+
+        /* Logos at bottom of content */
+        .cert-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding: 20px 0;
+        }
+
+        .cert-logos div {
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 40px 0 20px;
+            font-size: 13px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .footer h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 30px auto 0;
+            padding: 15px 20px 0;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        .footer-bottom a {
+            color: #999;
+            margin-right: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .nav-content {
+                justify-content: center;
+            }
+
+            .candidate-info strong {
+                width: 120px;
+            }
+
+            .cert-logos {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div>Università per Stranieri di Perugia</div>
+            <div>
+                <a href="#">Contatta il CVCL</a>
+                <a href="#">Accedi</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-area">
+                <div class="cvcl-logo">CVCL</div>
+                <div class="logo-text">
+                    <strong>CENTRO VALUTAZIONE</strong>
+                    CERTIFICAZIONI LINGUISTICHE<br>
+                    Università per Stranieri di Perugia
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#">▶</a>
+                <a href="#">f</a>
+                <a href="#">📷</a>
+                <a href="#">in</a>
+                <a href="#">𝕏</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <div class="nav-content">
+            <a href="#">Home</a>
+            <a href="#">Chi siamo</a>
+            <a href="#">Attività e servizi</a>
+            <a href="#">Certificazioni CELI e DILS-PG</a>
+            <a href="#">Centri d'esame</a>
+            <a href="#">Regolamenti e pagamenti</a>
+            <a href="#">Notizie e avvisi</a>
