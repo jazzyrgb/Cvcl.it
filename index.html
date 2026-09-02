@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -6,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verifica risultati candidato | CVCL</title>
     <style>
+        :root {
+            --primary: #7a003c;
+            --primary-light: #f8f0f4;
+            --text: #333;
+            --border: #d0d0d0;
+            --footer-bg: #1a1a1a;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,31 +21,35 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #ffffff;
-            color: #333;
+            background: #fff;
+            color: var(--text);
             line-height: 1.5;
+            font-size: 15px;
         }
 
-        /* Top dark purple bar */
+        a {
+            text-decoration: none;
+        }
+
+        /* Top Bar */
         .top-bar {
-            background-color: #7a003c;
+            background: var(--primary);
             color: white;
             font-size: 13px;
-            padding: 6px 0;
+            padding: 7px 0;
         }
 
         .top-bar-content {
-            max-width: 1200px;
+            max-width: 1180px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         .top-bar a {
             color: white;
-            text-decoration: none;
             margin-left: 20px;
         }
 
@@ -46,20 +57,20 @@
             text-decoration: underline;
         }
 
-        /* Header with logos */
+        /* Header */
         .header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e0e0e0;
-            padding: 15px 0;
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 16px 0;
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1180px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         .logo-area {
@@ -69,47 +80,43 @@
         }
 
         .cvcl-logo {
-            background-color: #7a003c;
+            background: var(--primary);
             color: white;
-            width: 70px;
-            height: 70px;
+            width: 68px;
+            height: 68px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 18px;
-            flex-shrink: 0;
+            font-size: 17px;
         }
 
         .logo-text {
-            font-size: 13px;
-            line-height: 1.3;
-            color: #333;
+            font-size: 12.5px;
+            line-height: 1.35;
         }
 
         .logo-text strong {
             display: block;
-            font-size: 14px;
-            color: #7a003c;
+            font-size: 13.5px;
+            color: var(--primary);
         }
 
         .social-links a {
-            color: #7a003c;
+            color: var(--primary);
             margin-left: 12px;
-            font-size: 18px;
-            text-decoration: none;
+            font-size: 16px;
         }
 
         /* Navigation */
         .nav {
-            background-color: #ffffff;
+            background: #fff;
             border-bottom: 1px solid #ddd;
-            padding: 0;
         }
 
         .nav-content {
-            max-width: 1200px;
+            max-width: 1180px;
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
@@ -118,33 +125,31 @@
 
         .nav a {
             color: #333;
-            text-decoration: none;
             padding: 14px 16px;
             font-size: 14px;
-            display: inline-block;
         }
 
         .nav a:hover {
-            color: #7a003c;
-            background-color: #f8f0f4;
+            color: var(--primary);
+            background: var(--primary-light);
         }
 
-        /* Main content */
+        /* Main Content */
         .main {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 860px;
+            margin: 40px auto 50px;
+            padding: 0 24px;
         }
 
         h1 {
-            color: #7a003c;
-            font-size: 28px;
-            margin-bottom: 25px;
+            color: var(--primary);
+            font-size: 26px;
             font-weight: 600;
+            margin-bottom: 25px;
         }
 
         .candidate-info {
-            margin-bottom: 30px;
+            margin-bottom: 28px;
             font-size: 15px;
         }
 
@@ -154,131 +159,183 @@
 
         .candidate-info strong {
             display: inline-block;
-            width: 140px;
-            color: #333;
+            width: 145px;
+            font-weight: 600;
         }
 
         .result-box {
-            background-color: #f9f9f9;
+            background: #f9f9f9;
             border: 1px solid #e0e0e0;
-            padding: 18px 22px;
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
             margin-bottom: 25px;
-            border-radius: 4px;
         }
 
         .result-box .final {
-            font-size: 16px;
-            margin-bottom: 8px;
+            font-size: 15.5px;
+            margin-bottom: 6px;
+        }
+
+        .result-box .final strong {
+            color: #1a7a1a;
         }
 
         .result-box .score {
             font-size: 16px;
             font-weight: bold;
-            color: #7a003c;
+            color: var(--primary);
         }
 
         .section-title {
             font-size: 15px;
+            font-weight: 600;
             margin-bottom: 12px;
-            color: #333;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 14px;
-            margin-bottom: 30px;
+            font-size: 14.5px;
+            margin-bottom: 40px;
         }
 
         table td {
-            border: 1px solid #ccc;
+            border: 1px solid var(--border);
             padding: 10px 14px;
         }
 
         table tr:first-child td {
-            background-color: #f5f5f5;
-            font-weight: bold;
+            background: #f3f3f3;
+            font-weight: 600;
         }
 
         .highlight {
-            color: #0066cc;
-            font-weight: 500;
+            color: #0066b3;
+            font-weight: 600;
         }
 
-        /* Logos at bottom of content */
+        /* Certification logos */
         .cert-logos {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 40px;
+            align-items: flex-start;
+            gap: 45px;
             flex-wrap: wrap;
-            margin: 40px 0;
-            padding: 20px 0;
+            margin: 40px 0 20px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
         }
 
-        .cert-logos div {
+        .cert-item {
             text-align: center;
-            font-size: 12px;
+            font-size: 11.5px;
             color: #555;
+            line-height: 1.4;
+            max-width: 110px;
+        }
+
+        .cert-circle {
+            width: 56px;
+            height: 56px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .cert-text {
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .cert-text.blue {
+            color: #0066b3;
         }
 
         /* Footer */
         .footer {
-            background-color: #1a1a1a;
-            color: #ccc;
-            padding: 40px 0 20px;
-            font-size: 13px;
+            background: var(--footer-bg);
+            color: #c0c0c0;
+            padding: 40px 0 0;
+            font-size: 13.5px;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1180px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
             gap: 30px;
-            padding: 0 20px;
+            padding: 0 24px 30px;
         }
 
         .footer h4 {
             color: white;
-            margin-bottom: 15px;
-            font-size: 14px;
+            margin-bottom: 14px;
+            font-size: 13.5px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
+        .footer p {
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+
         .footer a {
-            color: #ccc;
-            text-decoration: none;
+            color: #c0c0c0;
             display: block;
             margin-bottom: 8px;
         }
 
         .footer a:hover {
-            color: #fff;
+            color: white;
         }
 
         .footer-bottom {
-            max-width: 1200px;
-            margin: 30px auto 0;
-            padding: 15px 20px 0;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 15px 24px;
             border-top: 1px solid #333;
             display: flex;
             justify-content: space-between;
-            font-size: 12px;
+            font-size: 12.5px;
+            color: #999;
         }
 
         .footer-bottom a {
             color: #999;
             margin-right: 15px;
+            display: inline;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
             .header-content {
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
+            }
+
+            .logo-area {
+                flex-direction: column;
             }
 
             .nav-content {
@@ -286,11 +343,19 @@
             }
 
             .candidate-info strong {
-                width: 120px;
+                width: auto;
+                display: block;
+                margin-bottom: 2px;
             }
 
-            .cert-logos {
-                gap: 20px;
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
             }
         }
     </style>
@@ -339,3 +404,118 @@
             <a href="#">Centri d'esame</a>
             <a href="#">Regolamenti e pagamenti</a>
             <a href="#">Notizie e avvisi</a>
+            <a href="#">Contatti</a>
+        </div>
+    </div>
+
+    <!-- Main Content - EXACT TEXT FROM YOUR PICTURE -->
+    <div class="main">
+        <h1>Verifica risultati candidato</h1>
+
+        <div class="candidate-info">
+            <p><strong>MATRICOLA:</strong> 80090142</p>
+            <p><strong>COGNOME:</strong> PANAYCH</p>
+            <p><strong>NOME:</strong> GURPREET SINGH</p>
+            <p><strong>DATA DI NASCITA:</strong> 03-05-1989</p>
+            <p><strong>NAZIONALITA':</strong> INDIANA</p>
+        </div>
+
+        <div class="result-box">
+            <div class="final">Risultato finale: <strong>ESAME SUPERATO</strong></div>
+            <div class="score">Punteggio ottenuto 76/120</div>
+        </div>
+
+        <div class="section-title">Punteggio ottenuto nelle prove</div>
+
+        <table>
+            <tr>
+                <td>Livello:</td>
+                <td>A2 CELI 1 IMMIGRATI</td>
+            </tr>
+            <tr>
+                <td class="highlight">Prova Scritta:</td>
+                <td>55/90</td>
+            </tr>
+            <tr>
+                <td>Comprensione della lettura:</td>
+                <td>24/30</td>
+            </tr>
+            <tr>
+                <td>Produzione di testi scritti:</td>
+                <td>16/30</td>
+            </tr>
+            <tr>
+                <td>Comprensione dell'Ascolto:</td>
+                <td>15/30</td>
+            </tr>
+            <tr>
+                <td>Prova Orale:</td>
+                <td>21/30</td>
+            </tr>
+        </table>
+
+        <!-- Certification logos -->
+        <div class="cert-logos">
+            <div class="cert-item">
+                <div class="cert-circle">CVCL</div>
+                Università<br>per Stranieri<br>di Perugia
+            </div>
+            <div class="cert-item">
+                <div class="cert-text">ALTE</div>
+                Association of<br>Language Testers<br>in Europe
+            </div>
+            <div class="cert-item">
+                <div class="cert-text blue">Eaquals</div>
+                Excellence in<br>Language Education
+            </div>
+            <div class="cert-item">
+                <div class="cert-circle" style="background:#003399; border-color:#003399; color:white; font-size:11px;">CE</div>
+                Council of Europe
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div>
+                <h4>Contatti</h4>
+                <p>Palazzina Lupatelli<br>
+                Piazza Giorgio Spitella, 1<br>
+                06122 Perugia</p>
+                <p style="margin-top:12px;">Tel.: +39 075 5746 510</p>
+                <p>E-mail: certificazione@unistrapg.it</p>
+                <p>Cod.Fiscale: 80002630541</p>
+                <p>Partita Iva: 01202780548</p>
+                <p>PEC: protocollo (at) pec.unistrapg.it</p>
+            </div>
+            <div>
+                <h4>Attività e servizi</h4>
+                <a href="#">Chi siamo</a>
+                <a href="#">Contatti</a>
+                <a href="#">Esami</a>
+                <a href="#">Formazione</a>
+            </div>
+            <div>
+                <h4>Certificazioni</h4>
+                <a href="#">Esami CELI</a>
+                <a href="#">Esami DILS-PG</a>
+            </div>
+            <div>
+                <h4>Progetti di ricerca</h4>
+                <a href="#">Progetti nazionali</a>
+                <a href="#">Progetti internazionali</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>
+                <a href="#">Privacy policy</a>
+                <a href="#">Cookie policy</a>
+            </div>
+            <div>© CVCL - Università per Stranieri di Perugia</div>
+        </div>
+    </div>
+
+</body>
+</html>
